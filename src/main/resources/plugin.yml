@@ -1,0 +1,7 @@
+name: PlotTools
+version: ${project.version}
+main: dev.nachwahl.plottools.PlotTools
+depend:
+  - WorldEdit
+commands:
+  createplot:
