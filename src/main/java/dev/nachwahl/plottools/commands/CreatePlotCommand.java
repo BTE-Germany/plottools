@@ -242,26 +242,7 @@ public class CreatePlotCommand implements CommandExecutor {
             channelSftp.put(filePath, plotID + ".schematic");
             channelSftp.disconnect();
             jschSession.disconnect();
-
-            /*SSHClient ssh = new SSHClient();
-            ssh.loadKnownHosts();
-            ssh.addHostKeyVerifier("c1:94:01:00:56:2e:c8:35:5a:87:16:c4:6a:8c:82:c5");
-            ssh.connect(fb.getString("sftp.host"));
-            try {
-                ssh.authPassword(fb.getString("sftp.username"), fb.getString("sftp.password"));
-                SFTPClient sftp = ssh.newSFTPClient();
-                try {
-                    sftp.mkdirs(schematic.getParentFile().getName());
-                    System.out.println(filePath);
-                    System.out.println("to");
-                    System.out.println( Paths.get(fb.getString("sftp.location"), String.valueOf(cityID), plotID + ".schematic").toString());
-                    sftp.put(new FileSystemFile(filePath), Paths.get(fb.getString("sftp.location"), String.valueOf(cityID), plotID + ".schematic").toString());
-                } finally {
-                    sftp.close();
-                }
-            } finally {
-                ssh.disconnect();
-            }*/
+            
 
 
         } catch (Exception ex) {

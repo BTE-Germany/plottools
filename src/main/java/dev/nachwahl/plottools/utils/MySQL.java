@@ -33,23 +33,6 @@ public class MySQL {
             }
         }
     }
-    public static void connectDiscordUserDB() {
-        FileBuilder fb = new FileBuilder("plugins/BuildEvent", "mysql.yml");
-        String host = fb.getString("user.host");
-        String port = fb.getString("user.port");
-        String database = fb.getString("user.database");
-        String user = fb.getString("user.user");
-        String password = fb.getString("user.password");
-        if (!isDiscordDBConnected()) {
-            try {
-                DCDBcon = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false", user, password);
-                System.out.println("[PlotTools]" + ANSI_GREEN + " Discord user DB MySQL connection ok!" + ANSI_RESET);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("[PlotTools]" + ANSI_RED + " Discord user DB MySQL connection error" + ANSI_RESET);
-            }
-        }
-    }
 
     public static void disconnect() {
         if (isConnected()) {
@@ -72,24 +55,12 @@ public class MySQL {
             return false;
         }
     }
-    public static boolean isDiscordDBConnected() {
-        try {
-            return (DCDBcon != null && (!DCDBcon.isClosed()));
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+
 
     public static Connection getConnection() {
         if (!isConnected())
             connect();
         return con;
-    }
-    public static Connection getDCDBConnection() {
-        if (!isConnected())
-            connect();
-        return DCDBcon;
     }
 
     public static ResultSet getCities() throws SQLException {
